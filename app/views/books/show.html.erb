@@ -1,1 +1,16 @@
+<h2>User info</h2>
 
+<h2>New book</h2>
+
+<h2>Users</h2>
+  
+  <%= link_to user_path(@book) do %>
+  <%= image_tag @book.get_profile_image(50,50) %>
+    <% end %>
+    <%= link_to @user.name, user_path(@book) %>
+    <%= link_to @book.title, book_path(@book)  %>
+    <%= @book.body %>
+    <%= link_to "edit", edit_book_path %>
+   <% if @book.user_id == current_user.id %>
+     <%= link_to "destroy", book_path(@book), method: :delete %>
+    <% end %>

@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
   def show
-    
+   @book =Book.find(params[:id])
+  #投稿したものを１件取り出す 
+   @user = @book.user
+  #@book.userは投稿したその人
   end
 
   def index
@@ -10,6 +13,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
 
   def create
@@ -18,6 +22,14 @@ class BooksController < ApplicationController
     @book.save
     redirect_to book_path(@book)
   end
+  
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to users_path
+    
+  end
+  
 
   private
 
