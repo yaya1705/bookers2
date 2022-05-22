@@ -2,6 +2,9 @@ class Book < ApplicationRecord
   # ユーザーのプロフィール画像で使う
    has_one_attached :profile_image
    belongs_to :user
+   
+  validates :title, presence: true
+  validates :body, presence: true, length: {maximum:200}
 
  def get_profile_image(width, height)
   unless profile_image.attached?

@@ -34,8 +34,8 @@
               <tr>
                 <td>
                    <div class="row">
-                       <%= link_to user_path(@user) do %>
-                          <%= image_tag @user.get_profile_image(50,50) %>
+                       <%= link_to user_path(user) do %>
+                          <%= image_tag user.get_profile_image(50,50) %>
                        <% end %>
                    </div>
                 </td>
