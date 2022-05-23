@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   def correct_user
       @user = User.find(params[:id])
      redirect_to user_path(current_user) unless @user == current_user
+    #user_path(current_user)で今ログインしている人のuser_pathに遷移される
   end
   
 end
