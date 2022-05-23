@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-   before_action :correct_user, only: [:edit, :update]
+  before_action :authenticate_user!, except: [:top]
+  before_action :correct_user, only: [:edit, :update]
   def show
    @book_show =Book.find(params[:id])
   #投稿したものを１件取り出す 
@@ -56,6 +57,7 @@ class BooksController < ApplicationController
   def correct_user
     @book = Book.find(params[:id])
     @user = @book.user
-    redirect_to(books_path) unless @user == current_user
+    redirect_to books_path unless @user == current_user
   end
+  
 end
